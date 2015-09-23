@@ -1,12 +1,12 @@
-# TmgExporter
+### TmgExporter
 A command line tool to export The Master Genealogist (TMG) data to a variety of databases and file formats like SQLite and JSON.
 
-# Prerequisites
+### Prerequisites
 The Master Genealogist (TMG) data is stored in FoxPro tables and this software requires the
 [Microsoft OLE DB Provider for Visual FoxPro 9.0](https://www.microsoft.com/en-us/download/details.aspx?id=14839)
 to be installed on your system prior to running this software.
 
-# Command line parameters
+### Command line parameters
 
 Required parameter:
 -------------------
@@ -28,7 +28,11 @@ s:sqlserver    [SQL Server database connection string](http://www.connectionstri
 
 x:xml          Dump tables to xml
 
-# Examples
+### Examples
 	TmgExporter -t "C:\Program Files (x86)\The Master Genealogist v8\sample\sample__.pjc" -j -l sample.sqlite3
 
 This will dump the sample TMG database to JSON and to a SQLite database called sample.sqlite3
+
+	TmgExporter -t "C:\Program Files (x86)\The Master Genealogist v8\sample\sample__.pjc" -m "Server=myServerAddress;Database=myDataBase;Uid=myUsername;Pwd=myPassword;"
+	
+This will dump the sample TMG database to a MySQL/MariaDB database specified by the connection string (the database needs to have already been created and the specified user must have permission to create tables and indexes)
