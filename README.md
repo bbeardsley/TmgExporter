@@ -22,3 +22,7 @@ And one of the following parameters:
 	s:sqlserver    Sql Server database connection string
 	x:xml          Dump tables to xml
 
+# Examples
+	TmgExporter -t "C:\Program Files (x86)\The Master Genealogist v8\sample\sample__.pjc" -j -l sample.sqlite3
+
+This will dump the sample program to JSON and to a SQLite database called sample.sqlite3
