@@ -6,6 +6,10 @@ The Master Genealogist (TMG) data is stored in FoxPro tables and this software r
 [Microsoft OLE DB Provider for Visual FoxPro 9.0](https://www.microsoft.com/en-us/download/details.aspx?id=14839)
 to be installed on your system prior to running this software.
 
+Before exporting, run the TMG maintenance routines optimize, validate file integrity, optimize.
+
+Make sure TMG files are not open in any program before trying to export
+
 ### Command line parameters
 
 Required parameter:
