@@ -1,6 +1,8 @@
 ﻿using System.Data;
+using System.Globalization;
 using System.IO;
 using CsvHelper;
+using CsvHelper.Configuration;
 using NLog;
 
 namespace TmgExporter
@@ -26,7 +28,7 @@ namespace TmgExporter
             _logger.Info("Writing data to {0}...", outputFilename);
 
             using (var stringWriter = new StringWriter())
-            using (var csv = new CsvWriter(stringWriter))
+            using (var csv = new CsvWriter(stringWriter, new CsvConfiguration(CultureInfo.InvariantCulture)))
             {
                 foreach (DataColumn column in data.Columns)
                 {

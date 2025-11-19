@@ -1,5 +1,5 @@
 ﻿using System.Data;
-using IniParser;
+using Microsoft.Extensions.Configuration;
 using NLog;
 
 namespace TmgExporter
@@ -29,12 +29,16 @@ namespace TmgExporter
 
             _logger.Info("Getting the {0} data...", table.OutputTableName);
 
-            var iniData = new FileIniDataParser().ReadFile(_iniFile);
-            foreach (var section in iniData.Sections)
+            var configuration = new ConfigurationBuilder()
+                .AddIniFile(_iniFile)
+                .Build();
+
+            foreach (var section in configuration.GetChildren())
             {
-                foreach (var key in section.Keys)
+                var sectionName = section.Key;
+                foreach (var setting in section.GetChildren())
                 {
-                    dataTable.Rows.Add(new object[] { section.SectionName, key.KeyName, key.Value });
+                    dataTable.Rows.Add(new object[] { sectionName, setting.Key, setting.Value });
                 }
             }
 
